@@ -1,55 +1,27 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, file_names, use_key_in_widget_constructors, prefer_final_fields
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, file_names, use_key_in_widget_constructors, prefer_final_fields, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:music_app/Helper/utility.dart';
-import 'package:music_app/Screens/category.dart';
+import 'package:music_app/Screens/category_view.dart';
 import 'package:music_app/Screens/dashboard.dart';
-import 'package:music_app/Screens/profile_screen.dart';
+import 'package:music_app/Screens/profile_view.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class PersistenBottomNavBar extends StatelessWidget {
   const PersistenBottomNavBar({super.key});
 
-  @override
-  Widget build(BuildContext context) => MaterialApp(
-        title: "Persistent Bottom Navigation Bar Demo",
-        home: Builder(
-          builder: (context) => Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton(
-                  onPressed: () => Navigator.of(context).pushNamed("/minimal"),
-                  child: const Text("Show Minimal Example"),
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () =>
-                      Navigator.of(context).pushNamed("/interactive"),
-                  child: const Text("Show Interactive Example"),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-}
-
-class MinimalExample extends StatelessWidget {
-  const MinimalExample({super.key});
-
   List<PersistentTabConfig> _tabs() => [
         PersistentTabConfig(
           screen: DashBoard(),
           item: ItemConfig(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home_filled),
             title: "Home",
           ),
         ),
         PersistentTabConfig(
           screen: CategoryScreen(),
           item: ItemConfig(
-            icon: Icon(Icons.message),
+            icon: Icon(Icons.search),
             title: "Messages",
           ),
         ),
@@ -65,8 +37,11 @@ class MinimalExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) => PersistentTabView(
         tabs: _tabs(),
-        navBarBuilder: (navBarConfig) => Style1BottomNavBar(
+        navBarBuilder: (navBarConfig) => Style10BottomNavBar(
           navBarConfig: navBarConfig,
+          navBarDecoration: NavBarDecoration(
+            color: AppColor.blackcolor,
+          ),
         ),
       );
 }

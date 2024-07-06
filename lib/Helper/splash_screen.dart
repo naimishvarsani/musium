@@ -3,10 +3,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:music_app/Helper/bottomnavbar.dart';
 import 'package:music_app/Helper/preferances.dart';
 import 'package:music_app/Helper/utility.dart';
-import 'package:music_app/Screens/Intro_page/introduction.dart';
-import 'package:music_app/Screens/sign_up.dart';
+import 'package:music_app/Screens/Auth/social_login.dart';
+import 'package:music_app/Screens/intro_page.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -20,12 +21,12 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(seconds: 3), () async {
       var isIntroduction = await Preference.preference
           .getBool(key: PrefernceKey.isIntroductionScreenLoaded, defVal: false);
-      if (isIntroduction == true) {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => SignUpScreen()));
-      } else {
+      if (isIntroduction == false) {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (BuildContext context) => IntroPage()));
+      } else if (isIntroduction == true) {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => SocialLoginScreen()));
       }
     });
   }
