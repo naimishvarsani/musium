@@ -3,7 +3,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:music_app/Helper/bottomnavbar.dart';
 import 'package:music_app/Helper/preferances.dart';
 import 'package:music_app/Helper/utility.dart';
 import 'package:music_app/Screens/Auth/social_login.dart';
