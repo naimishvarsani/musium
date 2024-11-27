@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:music_app/Helper/utility.dart';
 
 class SocialLoginScreen extends StatelessWidget {
